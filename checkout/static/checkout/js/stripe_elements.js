@@ -5,11 +5,11 @@
     https://stripe.com/docs/stripe-js
 */
 
-var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
-var client_secret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripe_public_key);
+var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
+var clientSecret = $('#id_client_secret').text().slice(1, -1);
+var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
-var style ={
+var style = {
     base: {
         color: '#000',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
@@ -23,7 +23,7 @@ var style ={
         color: '#dc3545',
         iconColor: '#dc3545'
     }
-}; 
+};
 var card = elements.create('card', {style: style});
 card.mount('#card-element');
 
@@ -43,6 +43,7 @@ card.addEventListener('change', function (event) {
     }
 });
 
+// Handle form submit
 var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
